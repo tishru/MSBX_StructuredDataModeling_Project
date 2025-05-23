@@ -1,0 +1,373 @@
+﻿CREATE DATABASE crocsdatabase;
+USE crocsdatabase;
+
+
+CREATE TABLE business (
+    Date DATETIME,
+    Revenue INT,
+    Cost_of_Sales INT,
+    Net_Income_Loss INT,
+    Gross_Profit INT,
+    Shares_Basic INT,
+    Shares_Diluted INT,
+    Total_Assets INT,
+    Long_Term_Liabilities INT,
+    Total_Stockholders_Equity INT,
+    Business_PK INT PRIMARY KEY,
+    State VARCHAR(10) CHARACTER SET utf8
+);
+
+
+INSERT INTO `business` VALUES ('2008-12-31',721589,486722,-185076,233966,82767540,82767540,455039,33500,287163,1,'New York'),
+        ('2009-12-31',645767,337720,-42078,300961,85112461,85112461,409738,35303,287620,2,'Texas'),
+        ('2010-12-31',789695,364631,67726,423764,85482055,87595618,549481,35613,376106,3,'California'),
+        ('2011-12-31',1000903,464493,112788,536410,88317898,89981382,695453,48370,491780,4,'Alabama'),
+        ('2012-12-31',1123301,515324,131343,607977,89571105,90588416,829638,54300,617400,5,'California'),
+        ('2013-12-31',1192680,569482,10420,623198,87989,89089,875159,63487,624744,6,'Arizona'),
+        ('2014-12-31',1198223,603893,-4926,590345,85140,85140,806931,27849,452518,7,'New York'),
+        ('2015-12-31',1090630,579825,-83196,510805,75604,75604,608020,19294,245972,8,'California'),
+        ('2016-12-31',1036273,536109,-16494,500164,73371,73371,566390,17966,220383,9,'Arizona'),
+        ('2017-12-31',1023513,506292,10238,517221,72255,72255,543695,18379,185865,10,'New York');
+
+
+
+
+-- next
+
+
+CREATE TABLE IF NOT EXISTS `storelocations` (
+    `Store_PK` INT PRIMARY KEY,
+    `Store_Name` VARCHAR(37) CHARACTER SET utf8,
+    `Street_Address` VARCHAR(38) CHARACTER SET utf8,
+    `City` VARCHAR(14) CHARACTER SET utf8,
+    `State` VARCHAR(14) CHARACTER SET utf8,
+    `Zip_Code` INT
+);
+
+
+INSERT INTO `storelocations` VALUES (1,'Crocs at Vacaville Outlet','101D Nut Tree Rd','Vacaville','California',95687),
+        (2,'Crocs at Miromar','10801 Corkscrew Rd Suite 182','Estero','Florida',33928),
+        (3,'Crocs at Plaza Las Americas','525 Ave. F.D. Roosevelt Space 524','San Juan','Puerto Rico',918),
+        (4,'Crocs at Tanger Outlets Foxwoods','455 Trolley Line Blvd','Mashantucket','Connecticut',6338),
+        (5,'Crocs at Waikele','94-790 Lumiaina Street','Waipahu','Hawaii',96797),
+        (6,'Crocs at Plaza Bonita','3030 Plaza Bonita Road Space 1134','National City','California',91950),
+        (7,'Crocs at Concord Mills','8111 Concord Mills Blvd Space 529','Concord','North Carolina',28027),
+        (8,'Crocs at Seattle Premium Outlet','10600 Quil Ceda Blvd Suite 0417','Tulalip','Washington',98271),
+        (9,'Crocs at Niagara Falls Fashion Outlet','1989 Fashion Outlets Blvd Suite 208','Niagara Falls','New York',14304),
+        (10,'Crocs at Puerto Rico Premium Outlets','1 Prime Outlets Blvd Spc 910','Barceloneta','Puerto Rico',617),
+        (11,'Crocs at Silverthorne Outlet','167-D Wildernest Road','Silverthorne','Colorado',80498),
+        (12,'Crocs at Round Rock Premium Outlets','4401 N IH 35 Ste 822','Roundrock','Texas',78664),
+        (13,'Crocs at Florida Mall','8001 S Orange Blossom Trail Suite 646','Orlando','Florida',32809),
+        (14,'Crocs at Charlotte Premium Outlets','5512 New Fashion Way Suite 1026','Charlotte','North Carolina',28217),
+        (15,'Crocs at Ontario Mills','1 Mills Circle Space 356','Ontario','California',91764),
+        (16,'Crocs at Queens Center','90-15 Queens Blvd Space 2046','Elmhurst','New York',11373),
+        (17,'Crocs at Tanger Outlets Deer Park','152 The Arches Circle Suite 1326','Deer Park','New York',11729),
+        (18,'Crocs at Ocean City Outlet','12741 Ocean Gateway Suite 850','Ocean City','Maryland',21842),
+        (19,'Crocs at Gilroy Premium Outlet','8325 Arroyo Circle Suite 40','Gilroy','California',95020),
+        (20,'Crocs at Woodbury Commons','607 Bluebird Ct.','Central Valley','New York',10917),
+        (21,'Crocs at The Outlets at Orange','20 City Boulevard West Suite 414','Orange','California',92868),
+        (22,'Crocs at Queens Marketplace','69-201 Waikoloa Beach Drive Space 1003','Waikoloa','Hawaii',96738),
+        (23,'Crocs at Sugarloaf Mills','5900 Sugarloaf Parkway Suite 601','Lawrenceville','Georgia',30043),
+        (24,'Crocs at Norfolk Premium Outlets','1600 Premium Blvd Suite 889','Norfolk','Virginia',23502),
+        (25,'Crocs at Spotsylvania','137 Spotsylvania Mall Drive Space #673','Fredericksburg','Virginia',22407),
+        (26,'Crocs at Baybrook Mall','500 Baybrook Mall','Friendswood','Texas',77546),
+        (27,'Crocs at Carolina Premium Outlet','1025 Outlet Center Dr Suite 0031','Smithfield','North Carolina',27577),
+        (28,'Crocs at Princess Kaiulani','2360 Kalakaua Avenue','Honolulu','Hawaii',96815),
+        (29,'Crocs Tanger Outlets Grand Rapids','350 84th street SW Suite 220','Byron Center','Michigan',49315),
+        (30,'Crocs at Tanger Outlets Daytona','1100 Cornerstone Boulevard Suite 925','Daytona Beach','Florida',32114);
+
+
+-- next
+
+
+CREATE TABLE IF NOT EXISTS `competitors` (
+    `Brand_ID` VARCHAR(3) CHARACTER SET utf8 PRIMARY KEY,
+    `Brand` VARCHAR(12) CHARACTER SET utf8,
+    `Product_Name` VARCHAR(27) CHARACTER SET utf8,
+    `Image` VARCHAR(340) CHARACTER SET utf8,
+    `Material` VARCHAR(35) CHARACTER SET utf8,
+    `Unique_Features` VARCHAR(45) CHARACTER SET utf8,
+    `Price_in_USD` INT,
+    `Estimated_Profit_Margin` INT,
+    `Estimated_Gross_Profit_USD` INT,
+    `Year` INT,
+    `State` VARCHAR(10) CHARACTER SET utf8
+);
+
+
+INSERT INTO `competitors` VALUES ('B1 ','Crocs','Classic Lined Clog','https://www.crocs.com/p/classic-lined-clog/203591.html','Croslite™ with fuzzy liner','Lightweight, customizable, heel strap',60,50,35,2008,'New York'),
+        ('B2','Skechers','Bobs Plush ','https://www.skechers.com/bobs-keepsakes-lite---cozy-blend/114762_CSNT.html?campaigntype=shopping&src=paidmedia&gad_source=1&gclid=CjwKCAiAl4a6BhBqEiwAqvrqupYiCNRGUHUn5UEgCl9ZMNPVNvUkrDdOnkjfsTwMYnQYjO_-15Op-BoCc1IQAvD_BwE','microfiber with faux fur','Sustainable,memory foam',55,55,35,2010,'Alabama'),
+        ('B3','Birkenstock','Boston Big Buckle Shearling','https://www.birkenstock.com/us/boston-big-buckle-shearling-natural-leather-oiled/boston-269700-naturalleatheroiled-0-eva-w_2087.html?gad_source=4&gclid=EAIaIQobChMI3_yDwov5iQMVrBGtBh2bGTVkEAQYASABEgKdBvD_BwE','Natural suede with shearling lining','Iconic, EVA outsole, orthopedically support',170,50,100,1977,'Alabama'),
+        ('B4','Clarks','Shearling Lined Mule','https://www.clarks.com/en-us/camelae-shine/26172750-p?gad_source=1&gclid=CjwKCAiAl4a6BhBqEiwAqvrqupn6ONW0vS0Nb7U6trLG1CDa9S4VAhyA2peUNRdjL9mK_jf70wmv7xoCBjIQAvD_BwE','Leather with shearling lining','Stylish,durable, lightweight',55,50,60,2015,'Arizona'),
+        ('B5','Teva','Ember Shearling Slipper','https://www.teva.com/shoes/reember-terrain/196565507341.html?utm_source=google&utm_medium=pla&gad','Ripstop upper with shearling','Durable, outdoor, collapsible',80,50,50,2018,'Arizona'),
+        ('B6','Hoka One One','Recovery Slide','https://www.hoka.com/en/us/all-gender-footwear/ora-recovery-slide-3/197634089263.html?source=shoppingsite_PLA_1135061-SLLR-12/14&kpid=1135061-SLLR-12/14&utm_source=google&utm_medium=pla&gad_source=1&gclid=EAIaIQobChMI7-38rYz5iQMV7wetBh0vvQOZEAQYBSABEgLQ4_D_BwE&gclsrc=aw.ds','EVA foam with soft lining','Cushioned, Active lifestyle',50,50,30,2019,'New York'),
+        ('B7','Vans','Cozy ComfyCush Slip-On','https://www.vans.com/en-us/shoes-c00081/classic-slip-on-shoe-pvn000ct5jm9?gad_source=1&gclid=EAIaIQobChMIwvjW4oz5iQMVHhOtBh0CCwHtEAQYBCABEgIcmPD_BwE&gclsrc=aw.ds','Canvas with plush interior','Casual, skate-inspired',70,42,40,2020,'Texas'),
+        ('B8','Allbirds','Wool Lounger','https://www.allbirds.com/products/womens-wool-lounger-mule-natural-black?gad_source=1&gclid=EAIaIQobChMI57uKoo35iQMVySWtBh2bGzwsEAQYASABEgL68fD_BwE&size=7&utm_campaign=Shopping%20%2F%2F%20US%20%2F%2F%20Allbirds%20Brand%20%2F%2F%20New%20Product%20Launches&utm_content=721480401243_168923705925&utm_medium=shopping&utm_source=google&utm_term=','Merino wool with faux fur','Sustainable, washable, temperature regulation',105,52,65,2017,'California'),
+        ('B9','Keen','Howser Slide','https://www.keenfootwear.com/products/womens-howser-iii-slide-black-blue-atoll?variant=45679053635748&utm_source=google&utm_medium=cpc&utm_campaign=us_xxxxxx_os_hd_xxxx_x_x_pla_l_brandallproduct&gad_source=1&gclid=EAIaIQobChMI-7_B1I35iQMVlgCtBh3FixA0EAQYASABEgK_i_D_BwE','Recycled materials with fleece','Outdoor-, sustainable, durable',100,50,60,2008,'California'),
+        ('B10','Sanuk','Cozy Vibe','https://sanuk.com/products/w-cozy-vibe-low-sm-rad-yarn?variant=45673766813931&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gclid=EAIaIQobChMI3YO9-435iQMVwi-tBh02ywJ1EAQYASABEgLq2_D_BwE','Hemp with faux fur lining','Relaxed, eco-friendly, sustainable',65,46,40,2017,'New York');
+  
+  -- next
+  
+  CREATE TABLE IF NOT EXISTS `customer_demographics` (
+    `CustomerID` VARCHAR(4) CHARACTER SET utf8,
+    `Name` VARCHAR(21) CHARACTER SET utf8,
+    `Age` INT,
+    `Gender` VARCHAR(12) CHARACTER SET utf8,
+    `Email` VARCHAR(31) CHARACTER SET utf8,
+    `State` VARCHAR(10) CHARACTER SET utf8,
+    `CustomerType` VARCHAR(7) CHARACTER SET utf8,
+    `AssociatedSales` VARCHAR(4) CHARACTER SET utf8
+);
+
+
+INSERT INTO `customer_demographics` VALUES ('C001','Theresa Carter',41,'Women','srivera@yahoo.com','New York','New','S022'),
+        ('C002','Mark Bates',53,'Unisex Adult','ewiley@hotmail.com','Texas','Regular','S028'),
+        ('C003','Dr. Theresa Oliver MD',40,'Men','robertarmstrong@williams.com','Arizona','Regular','S007'),
+        ('C004','Stephanie Walker',38,'Unisex Adult','whitealyssa@ball-rivera.org','Arizona','New','S002'),
+        ('C005','Barbara Roman',29,'Men','lewisrichard@gmail.com','Alabama','New','S012'),
+        ('C006','Olivia Hoover',37,'Women','palmerjames@gmail.com','California','Regular','S020'),
+        ('C007','Kelly Obrien',18,'Men','ywatson@barnes-curtis.com','Arizona','VIP','S018'),
+        ('C008','Dennis Smith',27,'Unisex Adult','matthew23@hotmail.com','Alabama','VIP','S017'),
+        ('C009','Susan Mora',51,'Women','wbaker@gmail.com','Texas','New','S004'),
+        ('C010','Denise Nelson',25,'Unisex Adult','ygarrison@yahoo.com','New York','Regular','S007'),
+        ('C011','Jacob Bryant',25,'Women','vincentgonzales@yahoo.com','California','New','S011'),
+        ('C012','Kathy Thompson',30,'Unisex Adult','edavenport@hotmail.com','New York','Regular','S010'),
+        ('C013','Robert Ross',21,'Unisex Adult','zwolf@hotmail.com','California','Regular','S012'),
+        ('C014','Christina Hurst',32,'Unisex Adult','charles58@hotmail.com','Alabama','New','S015'),
+        ('C015','Sydney Juarez',40,'Unisex Adult','rebecca47@sullivan.info','New York','VIP','S016'),
+        ('C016','Travis Thompson',56,'Children','karenjackson@conley-daniels.com','Arizona','New','S001'),
+        ('C017','Robin Bryant',39,'Unisex Adult','robert96@contreras-murray.org','Alabama','VIP','S018'),
+        ('C018','Shawn Carr',39,'Children','bianca83@hotmail.com','California','Regular','S022'),
+        ('C019','Brittany Cruz',57,'Children','kathymurphy@yahoo.com','Arizona','New','S002'),
+        ('C020','Ricardo Williams',28,'Children','austinblack@montgomery.biz','Texas','Regular','S020'),
+        ('C021','Aaron Hall',49,'Women','ashleydalton@hardy.com','New York','Regular','S006'),
+        ('C022','David White',29,'Women','changjared@yahoo.com','California','VIP','S013'),
+        ('C023','Brandon Stein',24,'Men','joshualee@santiago.com','Alabama','New','S010'),
+        ('C024','Brian Ramsey',40,'Men','ian67@yahoo.com','California','Regular','S029'),
+        ('C025','Maria Bailey',41,'Men','michellemiller@gmail.com','Arizona','New','S014'),
+        ('C026','Debra Johnson',36,'Women','matthewmurray@hotmail.com','Texas','Regular','S008'),
+        ('C027','Theresa Lee',35,'Children','jill59@kelley.biz','Alabama','Regular','S013'),
+        ('C028','Maria Davis',35,'Children','ryan45@yahoo.com','California','New','S015'),
+        ('C029','Rebecca Dean',51,'Children','hillgeorge@gibson.com','Texas','New','S009'),
+        ('C030','Seth Edwards',30,'Women','lisagonzalez@hotmail.com','Alabama','New','S015');
+  
+  -- next
+  
+  CREATE TABLE IF NOT EXISTS `CustomerReviews` (
+    `ReviewID` VARCHAR(4) CHARACTER SET utf8 PRIMARY KEY,
+    `Title` VARCHAR(24) CHARACTER SET utf8,
+    `Rating` NUMERIC(2, 1),
+    `Number_of_Reviews` INT,
+    `Gender` VARCHAR(12) CHARACTER SET utf8,
+    `Product_Type` VARCHAR(6) CHARACTER SET utf8,
+    `Special_Feature` VARCHAR(12) CHARACTER SET utf8
+);
+
+
+INSERT INTO `CustomerReviews` VALUES ('R001','Crocs Stand Modern',4.3,1237,'Children','Clog','Lightweight'),
+        ('R002','Crocs Low Standard',4.5,6653,'Unisex Adult','Boot','Waterproof'),
+        ('R003','Crocs Around Classic',4.3,3231,'Men','Boot','Waterproof'),
+        ('R004','Crocs Offer Standard',4.6,7791,'Men','Sandal','Eco-Friendly'),
+        ('R005','Crocs Something Standard',4.3,1513,'Children','Clog','Lightweight'),
+        ('R006','Crocs Seem Lined',4.1,1936,'Children','Sandal','Lightweight'),
+        ('R007','Crocs Leave Classic',4.0,3886,'Women','Boot','Lightweight'),
+        ('R008','Crocs Attorney Modern',4.3,4645,'Men','Sandal','Eco-Friendly'),
+        ('R009','Crocs Nor Classic',4.8,746,'Women','Clog','Waterproof'),
+        ('R010','Crocs Clear Standard',4.6,6642,'Women','Clog','Lightweight'),
+        ('R011','Crocs Speak Modern',3.8,4599,'Men','Clog','Eco-Friendly'),
+        ('R012','Crocs By Classic',4.0,5688,'Unisex Adult','Sandal','Eco-Friendly'),
+        ('R013','Crocs Second Standard',4.5,6906,'Unisex Adult','Flat','Waterproof'),
+        ('R014','Crocs Ability Modern',4.9,8692,'Women','Clog','Lightweight'),
+        ('R015','Crocs Lay Lined',4.9,3106,'Unisex Adult','Flat','Waterproof'),
+        ('R016','Crocs Central Classic',3.8,7301,'Unisex Adult','Flat','Eco-Friendly'),
+        ('R017','Crocs Every Classic',4.6,5583,'Children','Flat','Standard'),
+        ('R018','Crocs Minute Standard',4.8,8057,'Unisex Adult','Clog','Waterproof'),
+        ('R019','Crocs Husband Modern',4.8,2618,'Unisex Adult','Boot','Eco-Friendly'),
+        ('R020','Crocs Argue Standard',4.7,401,'Men','Sandal','Standard'),
+        ('R021','Crocs Air Classic',3.9,5990,'Children','Boot','Waterproof'),
+        ('R022','Crocs Determine Modern',4.3,4150,'Unisex Adult','Boot','Waterproof'),
+        ('R023','Crocs Wife Classic',4.9,853,'Unisex Adult','Boot','Standard'),
+        ('R024','Crocs Where Lined',3.6,2264,'Children','Clog','Lightweight'),
+        ('R025','Crocs Push Lined',4.3,9149,'Unisex Adult','Flat','Lightweight'),
+        ('R026','Crocs He Classic',4.1,6204,'Women','Boot','Standard'),
+        ('R027','Crocs World Standard',5.0,2411,'Unisex Adult','Boot','Lightweight'),
+        ('R028','Crocs Position Modern',3.9,4594,'Men','Boot','Waterproof'),
+        ('R029','Crocs Laugh Modern',4.6,4307,'Men','Flat','Standard'),
+        ('R030','Crocs Fight Modern',3.6,5869,'Unisex Adult','Flat','Standard');
+  
+  -- next
+  
+  CREATE TABLE IF NOT EXISTS `EBayProducts` (
+    `ProductName` VARCHAR(26) CHARACTER SET utf8,
+    `ImageURL` VARCHAR(64) CHARACTER SET utf8,
+    `PurchaseLink` VARCHAR(537) CHARACTER SET utf8,
+    `ProductID` INT,
+    `CompetitorID` VARCHAR(2) CHARACTER SET utf8,
+    FOREIGN KEY (CompetitorID) REFERENCES competitors(Brand_ID)
+);
+
+
+INSERT INTO `EBayProducts` VALUES ('CYPRUS','https://drive.google.com/uc?id=1GqN4BfIbzMD_K866dHak8yG6wIF4AjZe','https://www.ebay.com/b/Crocs-Cyprus-In-Womens-Heels/55793/bn_7022439990',1,'B4'),
+        ('MALINDI','https://drive.google.com/uc?id=1V3PBiO-Ke75HUkFuff4LZezcmVmsk8ZM','https://www.ebay.com/b/Womens-Crocs-Malindi/45333/bn_108144335',2,'B4'),
+        ('ADARA','https://drive.google.com/uc?id=1QcFfx5W86Kwot3DaaG9PBeMH3wx5SQlq','https://www.ebay.com/sch/i.html?_nkw=crocs+adara+sandals',3,'B5'),
+        ('WOMEN''''S SANTA CRUZ','https://drive.google.com/uc?id=1Hk4nBxnOLABaH45h5i0h6qWQrcT7X7TS','https://www.ebay.com/sch/i.html?_nkw=crocs+women%27s+santa+cruz+loafers',4,'B2'),
+        ('MEN''''S SANTA CRUZ','https://drive.google.com/uc?id=1dGMfnCGAsFz9Kq4Y5h4YpB8J5zZLImcw','https://www.ebay.com/sch/i.html?_nkw=crocs+men%27s+santa+cruz+loafers',5,'B5'),
+        ('YUKON','https://drive.google.com/uc?id=1Q1YomuvxRn8ld9ztQk6GyV1cu2p9RsGj','https://www.ebay.com/sch/i.html?_nkw=crocs+yukon+clogs',6,'B5'),
+        ('ATLANTIC','https://drive.google.com/uc?id=13b1lVC5fbnQUYjtEFHiur6CCE6LPJ8_v','https://www.ebay.com/itm/176653325790?_skw=crocs+atlantic+shoe&itmmeta=01JBZ8GGQTH60CTGVH1M27B789&hash=item29215bd5de:g:ciIAAOSwcXVnG9eM&itmprp=enc%3AAQAJAAAA0HoV3kP08IDx%2BKZ9MfhVJKkNSldQxRHbPWFjrbK8cLhqnZD9EtJ%2BZfo%2BCVpPq7NXsxrK1JwY0wHGzes9NS0AJv%2FuyH8YwQGPr32DbkLUWBFvJpcNIsoviOtDwMUqV%2BUEwBDPjDZMuh3pXHDb32pd1hBLwJh%2Bp3r2JmSSVYtKDKiRZpok5CgF2DixAaMmNaArMR1UPOiOC2K3IHhlVsDPVWItJRcnYz8fPUqzH6UD1h0gT2uT%2BbzmQZsFfny%2FcVrjId88bgfWr409%2FFmGeH2u4DE%3D%7Ctkp%3ABk9SR4qMwujfZA',7,'B3'),
+        ('YUCATAN','https://drive.google.com/uc?id=1E_5lGvUnnihsLSo4o2uAW4y8LIzAxqUe','-',8,'B3'),
+        ('OTTER','https://drive.google.com/uc?id=1xhThPj60May8KHKeExYq0x3Y9X9CRN9T','https://www.ebay.com/sch/i.html?_nkw=crocs+otter+shoes',9,'B4'),
+        ('PELICAN','https://drive.google.com/uc?id=1zb5DM0tlllj8RjeINQlMja-5GuE9Y-bD','Unavailable',10,'B5'),
+        ('CELESTE PERFORATED LEATHER','https://drive.google.com/uc?id=17nsMvZNsdgztJawsDnnJk8-M9FgHsW8n','Unavailable',11,'B1'),
+        ('VENTURE SUEDE','https://drive.google.com/uc?id=1hT8k7Cpx0q2_y9yLAHtSRtKeW4eBy_1e','https://www.ebay.com/itm/286088907557?_skw=crocs+venture+suede&itmmeta=01JBZ8RQPCHNHWH31X59Q9VG4S&hash=item429c3a4b25:g:8AoAAOSwZUNm~XuL&itmprp=enc%3AAQAJAAAA8HoV3kP08IDx%2BKZ9MfhVJKleSpdesq9DKE6HmR5Ks%2BDZRnV8EQFVBIdLJjCkZxghnl8sVvSfVo2DWVve1kGHAiadO1jlronAJT6UdGt2vtQMO0l2dARNpqCNPAwc036hZ7JlKV67EijW1Fylty3qLvECBOFsi19CGyYRdr65xtJuBFC7pQC8kN3L8wQGPxl3Z4OluEMKIvwWJqBjAmN%2BHmssX721XIxqhV3%2FpRN6NqFIKrf%2F8y9rivruMc%2FU%2FM6Ax54HoANF3gAr%2Ba8QtX6GLDARKHigEthYTvRPCqP4sQKKbxeR8WSDGFKuXDkIawGVfg%3D%3D%7Ctkp%3ABk9SR6L74ujfZA',12,'B5'),
+        ('CELESTE SUEDE','https://drive.google.com/uc?id=1gCG1SJPZD9UtAwlAzyIN5Fr1j_Kh9J-M','https://www.ebay.com/itm/315694624802?_skw=crocs+sueded+alice&itmmeta=01JBZ8VRQ4K08AFPBY8NTZRRFH&hash=item4980ddb022:g:AfgAAOSwzZFmyRWh&itmprp=enc%3AAQAJAAAA0HoV3kP08IDx%2BKZ9MfhVJKn2MP9d4PpTqEHbIqOx0rbVD1aPJAPA7CeXVbtiHLQ%2FPkisXJ0kCR8E9kDIRlipXx5XAijHM5Ds9vOVL95oLxxJHCxuY%2B70M8iQjLKvFb8T6iB89doAC8x9WIX%2BKbLD8apgGysvdlzbQk4lCxxpEG0%2FoXvB7qAwCd%2Btd%2B%2BNfjodOetvZU%2F2OAj%2FzGxbWYsn1Xmyoz6qz731l1s0%2FqC1lW%2FRuRGhs3Oz8mE%2FFTkiHi1KFFGzNt3lq4IvcwiJcxzjcV0%3D%7Ctkp%3ABk9SR9aL7-jfZA',13,'B5'),
+        ('CELESTE CANVAS','https://drive.google.com/uc?id=1yfCIOQqexzJEhqhM79Dqw6nkvQzL9YL4','https://www.ebay.com/sch/i.html?_nkw=crocs+celeste+canvas',14,'B3'),
+        ('VENTURE LEATHER','https://drive.google.com/uc?id=1sRmyiBRuW_Y2ZeH5yLEli4N0tuElB5Gd','https://www.ebay.com/sch/i.html?_nkw=crocs+venture+leather',15,'B3'),
+        ('VENTURE CANVAS','https://drive.google.com/uc?id=1Zx-F7BBtl4KLDqmPQjlS6O5jUvObp66K','https://www.ebay.com/sch/i.html?_nkw=crocs+venture+canvas',16,'B4'),
+        ('SUEDED ALICE','https://drive.google.com/uc?id=1OnhqtmWipUqaSxUXBsMK-3VT7OH1ep8v','https://www.ebay.com/itm/235762635341?_skw=crocs+sueded+alice&itmmeta=01JBZ8X1YWW1S1FH619T8JEXXZ&hash=item36e48c524d:g:WkkAAOSw5rVm9u3d&itmprp=enc%3AAQAJAAAA8HoV3kP08IDx%2BKZ9MfhVJKmxO6Finh64W9lbqD%2FqVCGyGL43Dgmy1AAQ7ior2SR2MoVcAxkqbMzR%2FIHSse%2FB%2BVGtrfmznvgLgFTiVQMdrqI9tl3mzkDumYE3UsDrKgiQ3bq6Zl%2FhRqb2b%2FfGzWuMSvoe9Bkac%2FEX%2FOGG3wY%2FO%2Fbx5h98O8VkbgnrCUxxIEUVfalYo%2BD15qZqUO3Io61x8IKkTurs6rNq3WcXtDbsSOPtqmFdpX1uTg2K4zVlLQ0RZN0TuFMn1aiWCk1aSQw5eN%2BysN3y9VVsTNyrnMk1yUgwR7a5TQB41zgR65KmzV0H4g%3D%3D%7Ctkp%3ABk9SR8af9OjfZA',17,'B5'),
+        ('ALICE','https://drive.google.com/uc?id=1Sjb2bvGuYNoWWbedQFHmXFher_rfoAjT','https://www.ebay.com/itm/156466856339?_skw=crocs+alice&itmmeta=01JBZ8Y8AC8HVPHPZ4QPSJDCC2&hash=item246e26c193:g:q1MAAOSwlpJnE6Pc&itmprp=enc%3AAQAJAAAAwHoV3kP08IDx%2BKZ9MfhVJKkk97EW3prPVQWRjOXRWLYk83rH7SYzxxXDkX6OAfyVEL%2FHsiqp20eXheZbEM1bPvQhkKCyFw5WSmPAUOp92COp5OC%2FveKAW9pGWSwQzSCl05A3HcHEBec%2BFDrEhdGMl8DiK9qQXwDAKrP0jEGPhyMUFICOADX36ll2ghw%2FUQlTyf0zLi2hERsP4Km0O5TAAwqlKMpAKA2SkZe3BZLXbzT35ttAAzFmVadGhtflMTm%2Fcg%3D%3D%7Ctkp%3ABk9SR6aF-ejfZA',18,'B2'),
+        ('GIRLS'''' ALICE','https://drive.google.com/uc?id=1n1CEFvrKGRS4H2jVMdIZ10u0Wa_z3j7S','https://www.ebay.com/itm/145873262273?_skw=crocs+girls+alice&itmmeta=01JBZ8Z99K1CAB8RXR0WCKBFQN&hash=item21f6b956c1:g:73oAAOSwZhBmiDjC&itmprp=enc%3AAQAJAAAA8HoV3kP08IDx%2BKZ9MfhVJKnd1ZbmbZeMS6od0cocXeYGqvyMUESJXAnqiodQ%2F%2BU2HBZGNuz%2FSVhSFT2HNennqmRRnqRft1c%2Fl%2BA5QOzU%2FWLw5bERw%2BIMPJcKNeGU75%2Brgi2y7keMdqfjREHqi38oJp%2FQGRox3zLJXZqkuTHQvcdvpvaROOKAqrvmrwtUIenOffGVcBHrIHxV8jS1hSpgFIYL1w0kMsDCw2e%2BW29lqwnf%2FLnYd1HDXDsb78o4a6HVBB8pmCZ6JgSXO47SVPLlrX6WGgYPLk2%2F1VAPPyaIx9otE07Dwm%2BpcEI4J%2FKbWhmsbw%3D%3D%7Ctkp%3ABk9SR_CU_ejfZA',19,'B1'),
+        ('HI CRUISER','https://drive.google.com/uc?id=1qyxzRs0yBDTkOT5RmcMM-Af_BVuNDNSh','https://poshmark.com/listing/Hi-Cruiser-Crocs-casual-boot-5e93187312d88001e535dd88?srsltid=AfmBOop5EjupYhEh-_AhiyiPwChtzCCUTY96ckJ1vFf7FY0NVX9MF2pE',20,'B3'),
+        ('WOMEN''''S TROIKA','https://drive.google.com/uc?id=1GDr4ACpFBrEwI1ue1y-j-OaBrIJW8EF-','https://www.ebay.com/sch/i.html?_nkw=crocs+women%27s+troika',21,'B1'),
+        ('Mammoth','https://drive.google.com/uc?id=1aGTVtSPIE3gm1RWB2GW1mhCZUnLt4oaE','https://www.ebay.com/sch/i.html?_nkw=Crocs+Mammoth+A24:B24',22,'B4'),
+        ('Kids'''' Mammoth','https://drive.google.com/uc?id=1vrOnaYJ3omMsfJsaoEwOcIXMuSDu49VI','https://www.ebay.com/itm/266659379787?_skw=Crocs+Kids+Mammoth&itmmeta=01JBZ9BJVH74642TSWHWYJYKB8&hash=item3e16233a4b:g:JHcAAOSwRzZlwoRZ&itmprp=enc%3AAQAJAAAA0HoV3kP08IDx%2BKZ9MfhVJKn5skWTpTEzI1mR4%2Byhc6gmTN%2FtNM2DqPNktaU7TDjeDEyNszRPlCG8X5Zh29eRYqfTA2%2BgjEy9dk3lqj3490DOy3KkBEVEvSPk9WulA8c6vI9BU1x0AqdtLQWDkziuY06KtXvlX%2FnvaWhjFRE7U3%2BySD69mFxpG2YbwLTYovjDGFMorc0SjWcn5wMUlisH5QQTd9jCQY1zV8Du7LAYwMJZXp5504fRYJU2d1fknNoWJzTpv37Job12mv2MSdRuxmU%3D%7Ctkp%3ABk9SR-ytrunfZA',23,'B4'),
+        ('Axle','https://drive.google.com/uc?id=1yOJeQ5cYR_MTkBegnE3FDU08rfOif0YU','https://www.ebay.com/itm/204828520853?_skw=Crocs+Axle&itmmeta=01JBZ9E8HW33BCRS6E9ZTDQQXB&hash=item2fb0bb3195:g:H5oAAOSwA7lmaH8G&itmprp=enc%3AAQAJAAAAwHoV3kP08IDx%2BKZ9MfhVJKmxJ24QuzkFvy8YmakrbL0pkL1CCGDOFyxCo%2FCNpTuxJ9uhcsCFSyZwybFgxpZgXlPbmF0Ra50n%2BMnYJxK4N9Chhk5I03z56UPz%2FlvzDlA5U3YJwDqLBy0vQG3CIVQsXYLrvBF784uiZrNkYMMOaTBf57JaFrrWFhxK7nqMzKFTioH7y0nJK0zOCjDAg0XqzO5CW1X6u%2FbQRsRozifO4rcQCaMUBpWs3UlK31UwIdLUgw%3D%3D%7Ctkp%3ABk9SR_6IuenfZA',24,'B4'),
+        ('Kids'''' Axle','https://drive.google.com/uc?id=1qetiyEt3wRxg1okzSwUJV_ru4PHcbyLj','Unavailable',25,'B3'),
+        ('Kids'''' All Terrain','https://drive.google.com/uc?id=1VT-aMUCX0CrXgzfNEfFTHvBi2KwTST05','Unavailable',26,'B1'),
+        ('Sassari','https://drive.google.com/uc?id=1dme4x1ktfgWf4aQVCwz1AvE97T3ChWFr','https://www.ebay.com/sch/i.html?_nkw=Crocs+Sassari',27,'B3'),
+        ('Capri','https://drive.google.com/uc?id=1WMWr_yAxaUkJ_8kK7r-f1c4_RWV5VRkZ','https://www.ebay.com/sch/i.html?_nkw=Crocs+Capri',28,'B2'),
+        ('Women''''s Ithaca','https://drive.google.com/uc?id=1-DVTiiTP0vFoPj4DW3ha9E6xzF9gJtsl','https://www.ebay.com/sch/i.html?_nkw=Crocs+Womens+Ithaca',29,'B4'),
+        ('Cleo','https://drive.google.com/uc?id=129eeoNGMmQsuNDVVv2sGFoF8grd3mSgC','https://www.ebay.com/sch/i.html?_nkw=Crocs+Cleo',30,'B4');
+  
+  -- next
+  
+  CREATE TABLE IF NOT EXISTS `marketingcampaign` (
+    `BrandCollabID` INT PRIMARY KEY,
+    `StartYear` INT,
+    `EndYear` INT,
+    `TargetAudience` VARCHAR(11) CHARACTER SET utf8,
+    `Age_Group` VARCHAR(5) CHARACTER SET utf8,
+    `Brand_Collab` VARCHAR(26) CHARACTER SET utf8,
+    `Category` VARCHAR(19) CHARACTER SET utf8,
+    `StartPrice` INT,
+    `EndPrice` INT,
+    `Sell_Out_Range` VARCHAR(20) CHARACTER SET utf8,
+    `AssociatedReviewID` VARCHAR(4) CHARACTER SET utf8,
+    `MarketingBudget` INT,
+     FOREIGN KEY (AssociatedReviewID) REFERENCES CustomerReviews(ReviewID)
+);
+
+
+INSERT INTO `marketingcampaign` VALUES (1,2008,2011,'Gen Z','5–15','Disney','Kids, Pop Culture',25,45,'Consistent Sales','R027',20592),
+        (2,2008,2010,'Gen Z','6–12','Sesame Street','Kids, Educational',30,50,'Moderate Demand','R002',5953),
+        (3,2011,2011,'Gen Z','12–18','Disney','Kids, Pop Culture',30,50,'Steady Sales','R011',46471),
+        (4,2010,2010,'Millennials','18–40','Starbucks','Casual, Everyday',40,60,'Consistent Sales','R006',10109),
+        (5,2009,2010,'Millennials','18–40','Jibbitz','Customization',10,15,'Steady Sales','R018',16295),
+        (6,2010,2011,'Gen Z','16–30','John Deere','Outdoor, Casual',35,55,'Steady Sales','R004',47819),
+        (7,2011,2011,'Millennials','15–30','NFL','Sports, Casual',50,70,'Moderate Demand','R011',47982),
+        (8,2011,2011,'Millennials','18–35','NASCAR','Sports, Casual',40,60,'Moderate Demand','R004',43632),
+        (9,2012,2012,'Families','10–20','Monster Jam','Kids, Entertainment',40,60,'High Demand','R030',42128),
+        (10,2012,2012,'Gen Z','16–30','Spongebob Squarepants','Kids, Pop Culture',30,50,'Steady Sales','R021',6022),
+        (11,2012,2012,'Gen Z','12–25','NFL','Sports, Casual',40,70,'Consistent Sales','R026',44449),
+        (12,2012,2024,'Millennials','20–40','Classic Clogs','Everyday Comfort',35,65,'Consistent Sales','R020',43758),
+        (13,2013,2018,'Millennials','15–40','Disney','Kids, Pop Culture',30,55,'Moderate Demand','R010',44699),
+        (14,2014,2015,'Millennials','16–30','Hello Kitty','Pop Culture',40,70,'Steady Sales','R001',30530),
+        (15,2015,2017,'Millennials','25–45','Star Wars','Pop Culture',50,75,'Moderate Demand','R020',10586),
+        (16,2017,2022,'Millennials','15–30','Balenciaga','High Fashion',450,850,'Sold Out Quickly','R023',13360),
+        (17,2018,2021,'Gen Z','12–30','Post Malone','Streetwear',60,100,'Sold Out in Hours','R011',34526),
+        (18,2019,2019,'Millennials','10–30','Chinatown Market','Streetwear',70,100,'Sold Out Quickly','R001',31869),
+        (19,2020,2020,'Millennials','15–35','KFC','Novelty Collab',60,60,'Sold Out Quickly','R030',31758),
+        (20,2020,2020,'Gen Z','12–28','Justin Bieber (Drew House)','Limited Edition',70,90,'Sold Out in 24 Hours','R004',26435),
+        (21,2020,2020,'Millennials','20–45','Grateful Dead','Music, Pop Culture',65,90,'High Demand','R029',13696),
+        (22,2021,2021,'Gen Z','14–30','Diplo','Psychedelic Style',70,100,'High Demand','R019',9895),
+        (23,2022,2022,'Gen Alpha','6–20','Pokémon','Kids, Pop Culture',40,60,'Steady Sales','R012',12580),
+        (24,2022,2022,'Gen Z','12–35','Salehe Bembury','Designer Clogs',85,110,'Sold Out in Hours','R009',49113),
+        (25,2023,2023,'Gen Z','10–35','Barbie','Pop Culture',60,90,'Sold Out Quickly','R010',47180),
+        (26,2023,2023,'Gen Z','12–28','Minecraft','Gaming Collab',50,80,'High Demand','R020',16672),
+        (27,2024,2024,'Gen Z','12–30','Shrek','Pop Culture',60,60,'Sold Out in Hours','R001',24669);
+  
+  -- next
+  
+  CREATE TABLE IF NOT EXISTS `ProductCatalog` (
+    `ProductID` NUMERIC(7, 1) PRIMARY KEY,
+    `ImageURL` VARCHAR(64) CHARACTER SET utf8,
+    `ProductName` VARCHAR(26) CHARACTER SET utf8,
+    `Category` VARCHAR(9) CHARACTER SET utf8,
+    `WearOccasion` VARCHAR(8) CHARACTER SET utf8,
+    `Silhouette` VARCHAR(10) CHARACTER SET utf8,
+    `LaunchDate` INT,
+    `PrimaryMaterial` VARCHAR(8) CHARACTER SET utf8,
+    `SecondaryMaterial` VARCHAR(12) CHARACTER SET utf8,
+    `StyleCode` VARCHAR(11) CHARACTER SET utf8,
+    `Color` VARCHAR(11) CHARACTER SET utf8,
+    `Size` VARCHAR(11) CHARACTER SET utf8,
+    `Gender` VARCHAR(12) CHARACTER SET utf8
+);
+
+
+INSERT INTO `ProductCatalog` VALUES (102001,'https://drive.google.com/uc?id=1Kp_OtR2n-CoyPpXP6XVemZcTl4PoBnGg','CYPRUS','SANDALS','STYLE','SANDALS',2008,'CROSLITE','Unavailable','Unavailable','Unavailable','Unavailable','Children'),
+        (102002,'https://drive.google.com/uc?id=1yEpEEcgW2TA5PCoMI6woQjKrxmTfY5gK','MALINDI','SANDALS','STYLE','FLAT',2008,'CROSLITE','Unavailable','Unavailable','Unavailable','Unavailable','Men'),
+        (102003,'https://drive.google.com/uc?id=1WDCVs8ArRmaarPiuBGbxsRJXsQp1nPYL','ADARA','SANDALS','STYLE','FLOP',2008,'CROSLITE','Unavailable','Unavailable','Unavailable','Unavailable','Unisex Adult'),
+        (102004,'https://drive.google.com/uc?id=1TLq9IDLuqbiPjAurzOwYFAcPuhW01qEr','WOMENS SANTA CRUZ','LIFESTYLE','STYLE','SLIP ON',2008,'CROSLITE','CANVAS','Unavailable','Unavailable','Unavailable','Women'),
+        (102005,'https://drive.google.com/uc?id=1jrkCN_RYyl0rQvN04sv9TJeJIbEquze-','MENS SANTA CRUZ','LIFESTYLE','STYLE','SLIP ON',2008,'CROSLITE','CANVAS','Unavailable','Unavailable','Unavailable','Women'),
+        (102006,'https://drive.google.com/uc?id=1veZcqlF_JN4OMXLeUrN7pUYaGfoovrz2','YUKON','CLOG','EVERYDAY','CLOG',2008,'CROSLITE','LEATHER','Unavailable','Unavailable','Unavailable','Children'),
+        (102007,'https://drive.google.com/uc?id=1_OV347XMvuvqbCryBBgvubDDVQ3C-o1P','ATLANTIC','LIFESTYLE','STYLE','SHOE',2008,'CROSLITE','WATERPROOF','Unavailable','Unavailable','Unavailable','Children'),
+        (102008,'https://drive.google.com/uc?id=1d2dyBvFTwTWUR6GEvN-goupJ9XdMYK8U','YUCATAN','SANDALS','STYLE','SANDALS',2008,'CROSLITE','Unavailable','Unavailable','Unavailable','Unavailable','Children'),
+        (102009,'https://drive.google.com/uc?id=1_DRl7ncluoh3X09maZW7ZFf_Oz8jcDH7','OTTER','KIDS','STYLE','SANDALS',2008,'CROSLITE','Unavailable','Unavailable','Unavailable','Unavailable','Children'),
+        (102010,'https://drive.google.com/uc?id=1V_UCV0t7zlOa2F11wnWiQUTzqi-Cm5tW','PELICAN','KIDS','STYLE','SLIP ON',2008,'CROSLITE','Unavailable','Unavailable','Unavailable','Unavailable','Women'),
+        (102011,'https://drive.google.com/uc?id=1MhUtyU6fvhaGxysTskxv79BY7T7HhOHM','CELESTE PERFORATED LEATHER','SANDALS','STYLE','SLIP ON',2008,'CROSLITE','LEATHER','Unavailable','Unavailable','Unavailable','Unisex Adult'),
+        (102012,'https://drive.google.com/uc?id=1MZE_QlgkgPBhFUV_Mf_auuDupouIRJWD','VENTURE SUEDE','LIFESTYLE','STYLE','SHOE',2008,'CROSLITE','Unavailable','Unavailable','Unavailable','Unavailable','Unisex Adult'),
+        (102013,'https://drive.google.com/uc?id=1VyOHn9MjB6aX84TAybP67aqvbgixXNRq','CELESTE SUEDE','LIFESTYLE','STYLE','FLAT',2008,'CROSLITE','SUEDE','Unavailable','Unavailable','Unavailable','Unisex Adult'),
+        (102014,'https://drive.google.com/uc?id=1309lU_BcP37YV3EZxeWJe4ykmpa3TNbq','CELESTE CANVAS','LIFESTYLE','STYLE','FLAT',2008,'CROSLITE','CANVAS','Unavailable','Unavailable','Unavailable','Men'),
+        (102015,'https://drive.google.com/uc?id=1MzvzZWeDq3cw9GGLpbCVKm7S-qCHxgYh','VENTURE LEATHER','LIFESTYLE','STYLE','SHOE',2008,'CROSLITE','LEATHER','Unavailable','Unavailable','Unavailable','Men'),
+        (102016,'https://drive.google.com/uc?id=1kC6YceOzOWD2mbXjLDarmCv6fFNwlLrp','VENTURE CANVAS','LIFESTYLE','STYLE','SHOE',2008,'CROSLITE','CANVAS','Unavailable','Unavailable','Unavailable','Unisex Adult'),
+        (102017,'https://drive.google.com/uc?id=15qTDKHwqD7RQkx7WUbKdk8r-1tN5sBd3','SUEDED ALICE','LIFESTYLE','STYLE','MARY JANE',2008,'CROSLITE','SUEDE','Unavailable','Unavailable','Unavailable','Women'),
+        (102018,'https://drive.google.com/uc?id=1RUp3vSL8rJx6KXmsgmsmZvHD11PE6F6I','ALICE','LIFESTYLE','STYLE','MARY JANE',2008,'CROSLITE','Unavailable','Unavailable','Unavailable','Unavailable','Women'),
+        (102019,'https://drive.google.com/uc?id=1c3rMOtl_gtGfwsgL0taRKx3YkABPfo89','GIRLS ALICE','LIFESTYLE','STYLE','MARY JANE',2008,'CROSLITE','Unavailable','Unavailable','Unavailable','Unavailable','Unisex Adult'),
+        (102020,'https://drive.google.com/uc?id=1wlBSKib6uOGuAglKbWL-l85vxMZrbZvH','HI CRUISER','LIFESTYLE','STYLE','SHOE',2008,'CROSLITE','SUEDE','Unavailable','Unavailable','Unavailable','Children'),
+        (102021,'https://drive.google.com/uc?id=1gdRv8jqpczDQyaAKEpVLo8xtmKKbiUDS','WOMENS TROIKA','CLOG','EVERYDAY','CLOG',2008,'CROSLITE','SUEDE','Unavailable','Unavailable','Unavailable','Unisex Adult'),
+        (102022,'https://drive.google.com/uc?id=17PYiDPgJ5Y6cQ7ZWrg7EYb1SFJzEAV8k','MAMMOTH','CLOG','EVERYDAY','LINED CLOG',2008,'CROSLITE','SYNETHIC FUR','Unavailable','Unavailable','Unavailable','Women'),
+        (102023,'https://drive.google.com/uc?id=15ykGRmLNxT6zef3ZX2eQIFz2EJ7PaEZz','KIDS MAMMOTH','KIDS','EVERYDAY','LINED CLOG',2008,'CROSLITE','SYNETHIC FUR','Unavailable','Unavailable','Unavailable','Children'),
+        (102024,'https://drive.google.com/uc?id=1oHC4ZBaEX1FZSW0uCFDZbRMSgPIJ80xp','AXLE','LIFESTYLE','STYLE','SHOE',2008,'CROSLITE','LEATHER','Unavailable','Unavailable','Unavailable','Unisex Adult'),
+        (102025,'https://drive.google.com/uc?id=1mTq1lzUK6dIZ1afonNpVFyRMAewsByMO','KIDS AXLE','KIDS','STYLE','SHOE',2008,'CROSLITE','LEATHER','Unavailable','Unavailable','Unavailable','Women');
+        
+  
+  CREATE TABLE IF NOT EXISTS `sales_data` (
+    `SaleID` VARCHAR(4) CHARACTER SET utf8 PRIMARY KEY,
+    `ProductID` NUMERIC(7, 1),
+    `Store_PK` INT,
+    `SaleDate` DATETIME,
+    `Quantity` INT,
+    `Revenue` NUMERIC(6, 2),
+    `CustomerType` VARCHAR(7) CHARACTER SET utf8,
+    `State` VARCHAR(10) CHARACTER SET utf8,
+    FOREIGN KEY (ProductID) REFERENCES ProductCatalog(ProductID),
+    FOREIGN KEY (Store_PK) REFERENCES storelocations(Store_PK)
+);
+
+
+INSERT INTO `sales_data` VALUES 
+('S001', 102001, 8, '2024-08-19', 3, 130.8, 'New', 'Arizona'),
+('S002', 102002, 8, '2024-10-28', 4, 58.24, 'VIP', 'New York'),
+('S003', 102003, 7, '2023-06-12', 2, 271.09, 'Regular', 'New York'),
+('S004', 102004, 4, '2023-12-19', 5, 161.93, 'New', 'Alabama'),
+('S005', 102005, 1, '2023-10-17', 6, 845.2, 'VIP', 'Alabama'),
+('S006', 102006, 7, '2024-09-14', 7, 171.89, 'New', 'Texas'),
+('S007', 102007, 1, '2024-03-10', 1, 944.06, 'New', 'California'),
+('S008', 102008, 4, '2024-05-09', 6, 538.37, 'New', 'Texas'),
+('S009', 102009, 8, '2023-01-22', 8, 914.42, 'VIP', 'Arizona'),
+('S010', 102010, 1, '2024-10-28', 3, 1381.84, 'Regular', 'New York'),
+('S011', 102011, 5, '2023-09-20', 4, 879.31, 'VIP', 'California'),
+('S012', 102012, 7, '2023-08-05', 3, 214.0, 'New', 'California'),
+('S013', 102013, 1, '2024-09-06', 7, 170.95, 'Regular', 'Arizona'),
+('S014', 102014, 4, '2024-01-02', 1, 297.58, 'New', 'New York'),
+('S015', 102015, 5, '2023-11-10', 1, 145.04, 'Regular', 'Texas'),
+('S016', 102016, 9, '2024-03-21', 6, 972.19, 'New', 'Alabama'),
+('S017', 102017, 7, '2023-05-05', 3, 774.47, 'New', 'Arizona'),
+('S018', 102018, 5, '2023-04-08', 9, 80.84, 'Regular', 'Arizona'),
+('S019', 102019, 10, '2024-04-17', 6, 640.66, 'New', 'Alabama'),
+('S020', 102020, 5, '2023-12-06', 6, 390.29, 'VIP', 'Arizona'),
+('S021', 102021, 10, '2023-11-04', 9, 768.81, 'VIP', 'Arizona'),
+('S022', 102022, 7, '2024-05-28', 1, 340.07, 'VIP', 'Arizona'),
+('S023', 102023, 2, '2024-09-18', 4, 253.99, 'New', 'New York'),
+('S024', 102024, 1, '2024-06-02', 10, 571.51, 'VIP', 'California'),
+('S025', 102025, 2, '2023-08-28', 7, 1139.77, 'Regular', 'New York');
